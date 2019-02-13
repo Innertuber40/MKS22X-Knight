@@ -1,6 +1,9 @@
 public class KnightBoard {
 	private int[][] board;
 	public KnightBoard(int height, int length) {
+		if (height <= 0 || length <= 0) {
+			throw new IllegalArgumentException("Please use a legitimate board");
+		}
 		board = new int[height][length];
 	}
 
