@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.util.Arrays;
 
 public class KnightBoard {
 	private int[][] board;
@@ -32,6 +33,10 @@ public class KnightBoard {
 				board[i][j] = (int)(10 * Math.random());
 			}
 		}
+	}
+	public ArrayList<int> accessTheBoard() {
+		Integer[][] = new Integer[board.length][board[0].length];
+		return Arrays.asList(ArrayUtils.integerBoard);
 	}
 
 	public boolean solve(int startY, int startX) {
