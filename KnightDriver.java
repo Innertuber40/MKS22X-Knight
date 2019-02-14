@@ -40,27 +40,60 @@ public class KnightDriver {
 		KnightBoard preFilled = new KnightBoard(7, 8);
 		try {
 			preFilled.solve(-1, 6);
+			System.out.println(preFilled);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e);
 		}
 		try {
 			preFilled.solve(6, -54);
+			System.out.println(preFilled);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e);
 		}
 		try {
 			preFilled.solve(2, 8);
+			System.out.println(preFilled);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e);
 		}
 		try {
 			preFilled.solve(20, 4);
+			System.out.println(preFilled);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e);
+		}
+		try {
+			preFilled.countSolutions(-1, 6);
+			System.out.println(preFilled);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e);
+		}
+		try {
+			preFilled.countSolutions(6, -54);
+			System.out.println(preFilled);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e);
+		}
+		try {
+			preFilled.countSolutions(2, 8);
+			System.out.println(preFilled);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e);
+		}
+		try {
+			preFilled.countSolutions(20, 4);
+			System.out.println(preFilled);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e);
 		}
 		preFilled.fillBoard();
 		try {
 			preFilled.solve(3, 6);
+		} catch (IllegalStateException e) {
+			System.out.println(e);
+		}
+		try {
+			preFilled.countSolutions(3, 6);
 		} catch (IllegalStateException e) {
 			System.out.println(e);
 		}

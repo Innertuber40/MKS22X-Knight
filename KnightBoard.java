@@ -42,9 +42,23 @@ public class KnightBoard {
 				}
 			}
 		}
-		if (startY < 0 || startY >= board.length || startX < 0 || startY >= board.length) {
+		if (startY < 0 || startY >= board.length || startX < 0 || startX >= board.length) {
 			throw new IllegalArgumentException("You expect me to check a knight that doesn't even start on the board? I'm a doctor, not a magician!");
 		}
 		return true;
+	}
+
+	public int countSolutions(int startY, int startX) {
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board[0].length; j++) {
+				if (board[i][j] != 0) {
+					throw new IllegalStateException("You cannot solve an already solved board, silly.");
+				}
+			}
+		}
+		if (startY < 0 || startY >= board.length || startX < 0 || startX >= board.length) {
+			throw new IllegalArgumentException("You expect me to check a knight that doesn't even start on the board? I'm a doctor, not a magician!");
+		}
+		return 6;
 	}
 }
