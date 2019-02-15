@@ -35,7 +35,7 @@ public class KnightBoard {
 		}
 	}
 	public ArrayList<int> accessTheBoard() {
-		Integer[][] = new Integer[board.length][board[0].length];
+		Integer[][] integerBoard = new Integer[board.length][board[0].length];
 		return Arrays.asList(ArrayUtils.integerBoard);
 	}
 
