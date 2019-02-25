@@ -1,6 +1,3 @@
-import java.lang.Math;
-import java.util.Arrays;
-
 public class KnightBoard {
 	private int[][] board;
 	public KnightBoard(int height, int length) {
@@ -34,10 +31,6 @@ public class KnightBoard {
 			}
 		}
 	}
-	public ArrayList<int> accessTheBoard() {
-		Integer[][] integerBoard = new Integer[board.length][board[0].length];
-		return Arrays.asList(ArrayUtils.integerBoard);
-	}
 
 	public boolean solve(int startY, int startX) {
 		for (int i = 0; i < board.length; i++) {
@@ -56,9 +49,7 @@ public class KnightBoard {
 	public int countSolutions(int startY, int startX) {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[0].length; j++) {
-				if (board[i][j] != 0) {
 					throw new IllegalStateException("You cannot solve an already solved board, silly.");
-				}
 			}
 		}
 		if (startY < 0 || startY >= board.length || startX < 0 || startX >= board.length) {

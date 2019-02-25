@@ -97,7 +97,5 @@ public class KnightDriver {
 		} catch (IllegalStateException e) {
 			System.out.println(e);
 		}
-		System.out.println(preFilled);
-		System.out.println(preFilled.accessTheBoard());
 	}
 }
