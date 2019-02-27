@@ -1,6 +1,6 @@
 public class KnightDriver {
 	public static void main(String[] args) {
-		KnightBoard firstBoard = new KnightBoard(5, 5);
+		KnightBoard firstBoard = new KnightBoard(6, 5);
 		System.out.println(firstBoard);
 		try {
 			KnightBoard illegitimate = new KnightBoard(0, 1);
