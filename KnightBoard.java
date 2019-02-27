@@ -90,7 +90,7 @@ public class KnightBoard {
 		ArrayList<Coords> order = new ArrayList<Coords>();
 		for (int i = -2; i < 3; i++) {
 			for (int j = -2; j < 3; j++) {
-				if (i != 0 && j != 0 && i != j && -i != j && x + j < board[0].length && x + j >= 0 && y + i < board.length && y + i >= 0) {
+				if (i != 0 && j != 0 && i != j && -i != j && x + j < board[0].length && x + j >= 0 && y + i < board.length && y + i >= 0 && possibleMoves[y + i][x + j] != 0) {
 					possibleMoves[y + i][x + j]--;
 					if (board[y + i][x + j] == 0) {
 						Coords adding = new Coords(x + j, y + i, possibleMoves[y + i][x + j]);
@@ -154,7 +154,7 @@ public class KnightBoard {
 		ArrayList<Coords> order = new ArrayList<Coords>();
 		for (int i = -2; i < 3; i++) {
 			for (int j = -2; j < 3; j++) {
-				if (i != 0 && j != 0 && i != j && -i != j && x + j < board[0].length && x + j >= 0 && y + i < board.length && y + i >= 0) {
+				if (i != 0 && j != 0 && i != j && -i != j && x + j < board[0].length && x + j >= 0 && y + i < board.length && y + i >= 0 && possibleMoves[y + i][x + j] != 0) {
 					possibleMoves[y + i][x + j]--;
 					if (board[y + i][x + j] == 0) {
 						Coords adding = new Coords(x + j, y + i, possibleMoves[y + i][x + j]);
