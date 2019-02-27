@@ -110,6 +110,7 @@ public class KnightDriver {
 		System.out.println(small.solve(0, 0));
 		System.out.println(small);
 		KnightBoard threeByThree = new KnightBoard(3, 3);
+		System.out.println(threeByThree.countSolutions(0,0));
 		System.out.println(threeByThree.solve(0, 0));
 		System.out.println(threeByThree);
 	}
