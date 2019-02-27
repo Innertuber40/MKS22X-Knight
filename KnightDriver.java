@@ -1,6 +1,6 @@
 public class KnightDriver {
 	public static void main(String[] args) {
-		KnightBoard firstBoard = new KnightBoard(6, 8);
+		KnightBoard firstBoard = new KnightBoard(5, 5);
 		System.out.println(firstBoard);
 		try {
 			KnightBoard illegitimate = new KnightBoard(0, 1);
@@ -87,6 +87,7 @@ public class KnightDriver {
 			System.out.println(e);
 		}
 		preFilled.fillBoard();
+		System.out.println(preFilled);
 		try {
 			preFilled.solve(3, 6);
 		} catch (IllegalStateException e) {
@@ -101,6 +102,12 @@ public class KnightDriver {
 		KnightBoard small = new KnightBoard(2, 17);
 		System.out.println(small.helperToString());
 		System.out.println(firstBoard.helperToString());
-		firstBoard.solve(4, 4);
+		System.out.println(firstBoard.solve(0, 0));
+		System.out.println(firstBoard);
+		System.out.println(small.solve(0, 0));
+		System.out.println(small);
+		KnightBoard threeByThree = new KnightBoard(3, 3);
+		System.out.println(threeByThree.solve(0, 0));
+		System.out.println(threeByThree);
 	}
 }

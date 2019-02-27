@@ -42,8 +42,7 @@ public class KnightBoard {
 				} else if (board[i][j] < 10) {
 					returns = returns + " " + board[i][j] + " ";
 				} else {
-					returns += returns + board[i][j] + " ";
-				
+					returns = returns + board[i][j] + " ";
 				}
 			}
 			returns += "\n";
@@ -85,6 +84,7 @@ public class KnightBoard {
 		return solver(startX, startY, 1);
 	}
 	private boolean solver(int x, int y, int move) {
+		board[y][x] = move;
 		if (move == board.length * board[0].length) {
 			return true;
 		}
@@ -97,10 +97,10 @@ public class KnightBoard {
 				}
 			}
 		}
-		System.out.println();
+		/*System.out.println();
 		for (int i = 0; i < order.size(); i++) {
 			System.out.print(order.get(i).getVal() + ", ");
-		}
+		}*/
 		for (int i = 1; i < order.size(); i++) {                         // check each value only once      
             int j = i;
             Coords toInsert = order.get(i);                                       // save the value we are swapping back
@@ -110,10 +110,16 @@ public class KnightBoard {
             }
             order.set(j, toInsert);                                         // put the value in
         }
-		System.out.println();
+		/*System.out.println();
 		for (int i = 0; i < order.size(); i++) {
 			System.out.print(order.get(i).getVal() + ", ");
+		}*/
+		for (int i = 0; i < order.size(); i++) {
+			if (board[order.get(i).getY()][order.get(i).getX()] == 0 && solver(order.get(i).getX(), order.get(i).getY(), move + 1)) {
+				return true;
+			}
 		}
+		board[y][x] = 0;
 		return false;
 	}
 
