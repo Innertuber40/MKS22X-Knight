@@ -144,7 +144,7 @@ public class KnightBoard {
 		if (startY < 0 || startY >= board.length || startX < 0 || startX >= board[0].length) {
 			throw new IllegalArgumentException("You expect me to check a knight that doesn't even start on the board? I'm a doctor, not a magician!");
 		}
-		return counter(startX, startY, 0, 0);
+		return counter(startX, startY, 1, 0);
 	}
 	private int counter(int x, int y, int move, int count) {
 		if (move == board.length * board[0].length) {
