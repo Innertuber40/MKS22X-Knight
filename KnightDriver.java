@@ -102,7 +102,10 @@ public class KnightDriver {
 		KnightBoard small = new KnightBoard(2, 17);
 		System.out.println(small.helperToString());
 		System.out.println(firstBoard.helperToString());
+		System.out.println(firstBoard.countSolutions(0, 0));
+		System.out.println(firstBoard);
 		System.out.println(firstBoard.solve(0, 0));
+		System.out.println(firstBoard.helperToString());
 		System.out.println(firstBoard);
 		System.out.println(small.solve(0, 0));
 		System.out.println(small);

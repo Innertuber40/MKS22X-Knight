@@ -28,7 +28,6 @@ public class KnightBoard {
 					possibleMoves[i][j]++;
 				if (i - 2 >= 0 && j - 1 >= 0)
 					possibleMoves[i][j]++;
-
 			}
 		}
 	}
@@ -92,8 +91,11 @@ public class KnightBoard {
 		for (int i = -2; i < 3; i++) {
 			for (int j = -2; j < 3; j++) {
 				if (i != 0 && j != 0 && i != j && -i != j && x + j < board[0].length && x + j >= 0 && y + i < board.length && y + i >= 0) {
-					Coords adding = new Coords(x + j, y + i, possibleMoves[y + i][x + j]);
-					order.add(adding);
+					possibleMoves[y + i][x + j]--;
+					if (board[y + i][x + j] == 0) {
+						Coords adding = new Coords(x + j, y + i, possibleMoves[y + i][x + j]);
+						order.add(adding);
+					}
 				}
 			}
 		}
@@ -115,8 +117,15 @@ public class KnightBoard {
 			System.out.print(order.get(i).getVal() + ", ");
 		}*/
 		for (int i = 0; i < order.size(); i++) {
-			if (board[order.get(i).getY()][order.get(i).getX()] == 0 && solver(order.get(i).getX(), order.get(i).getY(), move + 1)) {
+			if (solver(order.get(i).getX(), order.get(i).getY(), move + 1)) {
 				return true;
+			}
+		}
+		for (int i = -2; i < 3; i++) {
+			for (int j = -2; j < 3; j++) {
+				if (i != 0 && j != 0 && i != j && -i != j && x + j < board[0].length && x + j >= 0 && y + i < board.length && y + i >= 0) {
+					possibleMoves[y + i][x + j]++;
+				}
 			}
 		}
 		board[y][x] = 0;
@@ -135,6 +144,55 @@ public class KnightBoard {
 		if (startY < 0 || startY >= board.length || startX < 0 || startX >= board[0].length) {
 			throw new IllegalArgumentException("You expect me to check a knight that doesn't even start on the board? I'm a doctor, not a magician!");
 		}
-		return 6;
+		return counter(startX, startY, 0, 0);
+	}
+	private int counter(int x, int y, int move, int count) {
+		if (move == board.length * board[0].length) {
+			return count + 1;
+		}
+		board[y][x] = move;
+		ArrayList<Coords> order = new ArrayList<Coords>();
+		for (int i = -2; i < 3; i++) {
+			for (int j = -2; j < 3; j++) {
+				if (i != 0 && j != 0 && i != j && -i != j && x + j < board[0].length && x + j >= 0 && y + i < board.length && y + i >= 0) {
+					possibleMoves[y + i][x + j]--;
+					if (board[y + i][x + j] == 0) {
+						Coords adding = new Coords(x + j, y + i, possibleMoves[y + i][x + j]);
+						order.add(adding);
+					}
+				}
+			}
+		}
+		/*System.out.println();
+		for (int i = 0; i < order.size(); i++) {
+			System.out.print(order.get(i).getVal() + ", ");
+		}*/
+		for (int i = 1; i < order.size(); i++) {                         // check each value only once      
+            int j = i;
+            Coords toInsert = order.get(i);                                       // save the value we are swapping back
+            while (j > 0 && (order.get(j - 1)).compareTo(toInsert) > 0) {    // occurs until the end or a smaller element
+                order.set(j, order.get(j - 1));                                // move up
+                j--;                                                      // move on to the next pair
+            }
+            order.set(j, toInsert);                                         // put the value in
+        }
+		/*System.out.println();
+		for (int i = 0; i < order.size(); i++) {
+			System.out.print(order.get(i).getVal() + ", ");
+		}*/
+		for (int i = 0; i < order.size(); i++) {
+			if (board[order.get(i).getY()][order.get(i).getX()] == 0) {
+				count = counter(order.get(i).getX(), order.get(i).getY(), move + 1, count);
+			}
+		}
+		board[y][x] = 0;
+		for (int i = -2; i < 3; i++) {
+			for (int j = -2; j < 3; j++) {
+				if (i != 0 && j != 0 && i != j && -i != j && x + j < board[0].length && x + j >= 0 && y + i < board.length && y + i >= 0) {
+					possibleMoves[y + i][x + j]++;
+				}
+			}
+		}
+		return count;
 	}
 }
