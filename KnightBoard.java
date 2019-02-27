@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class KnightBoard {
 	private int[][] board;
 	private int[][] possibleMoves;
@@ -74,13 +76,32 @@ public class KnightBoard {
 				}
 			}
 		}
-		if (startY < 0 || startY >= board.length || startX < 0 || startX >= board.length) {
+		if (startY < 0 || startY >= board.length || startX < 0 || startX >= board[0].length) {
 			throw new IllegalArgumentException("You expect me to check a knight that doesn't even start on the board? I'm a doctor, not a magician!");
 		}
-		return solver(startX, startY);
+		if (board.length < 3 || board[0].length < 3) {
+			return false;
+		}
+		return solver(startX, startY, 1);
 	}
-	private static boolean solver(int x, int y) {
-		return true;
+	private boolean solver(int x, int y, int move) {
+		if (move == board.length * board[0].length) {
+			return true;
+		}
+		ArrayList<Coords> order = new ArrayList<Coords>();
+		for (int i = -2; i < 3; i++) {
+			for (int j = -2; j < 3; j++) {
+				if (i != 0 && j != 0 && i != j && x + j < board[0].length && x + j >= 0 && y + i < board.length && y + i >= 0) {
+					Coords adding = new Coords(x + j, y + i, possibleMoves[j][i]);
+					order.add(adding);
+				}
+			}
+		}
+		System.out.println();
+		for (int i = 0; i < order.size(); i++) {
+			System.out.print(order.get(i).getVal() + ", ");
+		}
+		return false;
 	}
 
 
@@ -92,7 +113,7 @@ public class KnightBoard {
 				}
 			}
 		}
-		if (startY < 0 || startY >= board.length || startX < 0 || startX >= board.length) {
+		if (startY < 0 || startY >= board.length || startX < 0 || startX >= board[0].length) {
 			throw new IllegalArgumentException("You expect me to check a knight that doesn't even start on the board? I'm a doctor, not a magician!");
 		}
 		return 6;
