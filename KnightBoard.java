@@ -91,12 +91,25 @@ public class KnightBoard {
 		ArrayList<Coords> order = new ArrayList<Coords>();
 		for (int i = -2; i < 3; i++) {
 			for (int j = -2; j < 3; j++) {
-				if (i != 0 && j != 0 && i != j && x + j < board[0].length && x + j >= 0 && y + i < board.length && y + i >= 0) {
-					Coords adding = new Coords(x + j, y + i, possibleMoves[j][i]);
+				if (i != 0 && j != 0 && i != j && -i != j && x + j < board[0].length && x + j >= 0 && y + i < board.length && y + i >= 0) {
+					Coords adding = new Coords(x + j, y + i, possibleMoves[y + i][x + j]);
 					order.add(adding);
 				}
 			}
 		}
+		System.out.println();
+		for (int i = 0; i < order.size(); i++) {
+			System.out.print(order.get(i).getVal() + ", ");
+		}
+		for (int i = 1; i < order.size(); i++) {                         // check each value only once      
+            int j = i;
+            Coords toInsert = order.get(i);                                       // save the value we are swapping back
+            while (j > 0 && (order.get(j - 1)).compareTo(toInsert) > 0) {    // occurs until the end or a smaller element
+                order.set(j, order.get(j - 1));                                // move up
+                j--;                                                      // move on to the next pair
+            }
+            order.set(j, toInsert);                                         // put the value in
+        }
 		System.out.println();
 		for (int i = 0; i < order.size(); i++) {
 			System.out.print(order.get(i).getVal() + ", ");

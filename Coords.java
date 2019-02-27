@@ -1,4 +1,4 @@
-public class Coords {
+public class Coords implements Comparable<Coords> {
     private int x;
     private int y;
     private int value;
@@ -17,5 +17,14 @@ public class Coords {
     }
     public int getVal() {
         return value;
+    }
+    public int compareTo(Coords other) {
+        if (value > other.getVal()) {
+            return 1;
+        }
+        if (value < other.getVal()) {
+            return -1;
+        }
+        return 0;
     }
 }
